@@ -16,13 +16,13 @@
         ?>
     </h2>
 
-    <?php/* <?php $s = isset($_GET['age']) ? "年齡: {$_GET['age']}" : "沒有給年齡"
+     <!-- <?php $s = isset($_GET['age']) ? "年齡: {$_GET['age']}" : "沒有給年齡"
             ?>
 
 
-    <h2><?php echo $s ?></h2>
+    <h2><?php echo $s ?></h2> -->
 
-    */?>
+    
 
 
     <?php
