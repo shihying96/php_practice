@@ -12,17 +12,17 @@
 
     <!-- ?=是簡寫，這意盎不用多寫echo回傳 -->
     <!--  ?php $s = isset($_GET['age']...    echo $s-->
-    <h2><?= isset($_GET['age']) ? "年齡: {$_GET['age']}" : "沒有給年齡"
-        ?>
+    <h2><?php $s =  isset($_GET['age']) ? "年齡: {$_GET['age']}" : "沒有給年齡";
+        echo $s ?>
     </h2>
 
-     <!-- <?php $s = isset($_GET['age']) ? "年齡: {$_GET['age']}" : "沒有給年齡"
+    <!-- <?php $s = isset($_GET['age']) ? "年齡: {$_GET['age']}" : "沒有給年齡"
             ?>
 
 
     <h2><?php echo $s ?></h2> -->
 
-    
+
 
 
     <?php
