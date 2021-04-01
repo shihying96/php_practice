@@ -12,6 +12,7 @@ echo "<br> {$ar->age}";
 
 // 第二種寫法
 // json_decode可以把json轉換為原本的格式(ex:陣列...)
+// 後面加了true，就變回關聯式陣列，所以要用陣列方式取得ex:['name']
 $ar2 = json_decode($str, true);
 // 不用鍵頭->，用[]->
 echo "<br> {$ar2['name']}";
