@@ -21,7 +21,11 @@ $persons = [
         'gender' => 'female',
     ]
 ];
-// 到google擴充功能下載json viewer
-// json_encode可以把PHP的陣例完美的轉換成json format
-header('Content-Type: application/json');
-echo json_encode($persons, JSON_UNESCAPED_UNICODE);
+
+// header('Content-Type: application/json');
+echo json_encode([
+    'get' => $_GET,
+    'persons' => $persons
+], JSON_UNESCAPED_UNICODE);
+
+// =>關聯式陣列

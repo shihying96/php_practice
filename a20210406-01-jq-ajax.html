@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./bootstrap/css/bootstrap.css">
+</head>
+
+<body>
+    <!-- pre標籤是預先格式化，保留原始內容的格式(空格.換行...) -->
+    <pre id="result"></pre>
+    <script src="./lib/jquery-3.6.0.js"></script>
+    <script src="./bootstrap/js/bootstrap.bundle.js"></script>
+    <!-- jquery的方法，'a20210401-07-array-json.php'檔案相對路徑 -->
+    <!-- jQuery $.get() 和 $.post() 方法提供了從 Web 伺服器非同步傳送和檢索資料的簡單工具 -->
+    <!-- jQuery.get( url [, data ] [, success ] [, dataType ] ) -->
+    <script>
+        $.get('a20210401-07-array-json.php', function (data) {
+            console.log(data);
+            $('#result').text(data);
+        }, 'json');
+
+    </script>
+</body>
+
+</html>
