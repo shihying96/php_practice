@@ -8,7 +8,7 @@ $t_sql = 'SELECT COUNT(1) FROM address_book';
 $totalRows = $pdo->query($t_sql)->fetch(PDO::FETCH_NUM)[0];
 $totalPages = ceil($totalRows / $perPage);
 $page = isset($_GET['page']) ? intval($_GET['page']) : 1;
-
+$pageName = 'ab-list';
 
 
 
@@ -29,13 +29,21 @@ $rows = $pdo->query($sql)->fetchAll();
             <div class="col">
                 <nav aria-label="Page navigation example">
                     <ul class="pagination">
-                        <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                        <li class="page-item <?= $page <= 1 ? 'disabled' : '' ?>">
+                            <a class="page-link" href="?page=<?= $page - 1 ?>">
+                                <i class="fas fa-arrow-circle-left"></i>
+                            </a>
+                        </li>
                         <?php for ($i = 1; $i <= $totalPages; $i++) : ?>
-                            <li class="page-item">
+                            <li class="page-item <?= $i == $page ? 'active' : '' ?>">
                                 <a class="page-link" href="?page=<?= $i ?>"><?= $i ?></a>
                             </li>
                         <?php endfor; ?>
-                        <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                        <li class="page-item <?= $page >= $totalPages ? 'disabled' : '' ?>">
+                            <a class="page-link" href="?page=<?= $page + 1 ?>">
+                                <i class="fas fa-arrow-circle-right"></i>
+                            </a>
+                        </li>
                     </ul>
                 </nav>
             </div>
