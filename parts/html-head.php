@@ -7,6 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title><?= $title ?? '你好' ?></title>
     <link rel="stylesheet" href="<?= WEB_ROOT ?>/bootstrap/css/bootstrap.css">
+
+    <link rel="stylesheet" href="<?= WEB_ROOT ?>/fontawesome/css/all.css">
 </head>
 
 <body>
