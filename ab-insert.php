@@ -12,20 +12,33 @@ $pageName = 'ab-insert';
             <div class="card">
 
                 <div class="card-body">
-                    <h5 class="card-title">新增資料</h5>
-
-                    <form name="form1" method="post">
+                    <!-- novalidate把表單裡的檢查功能全關掉 -->
+                    <form name="form1" method="post" novalidate>
                         <div class="form-group">
-                            <label for="account">account address</label>
-                            <input type="text" class="form-control" id="account" name="account">
-
+                            <label for="name">*姓名</label>
+                            <!-- required為必填欄位 -->
+                            <input type="text" class="form-control" id="name" name="name" required>
                         </div>
                         <div class="form-group">
-                            <label for="password">Password</label>
-                            <input type="password" class="form-control" id="password" name="password">
+                            <label for="email">email</label>
+                            <!-- type="email"檢查是否有@ -->
+                            <input type="email" class="form-control" id="email" name="email">
                         </div>
-
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <div class="form-group">
+                            <label for="mobile">手機</label>
+                            <!-- pattern 輸入數字的限制 -->
+                            <!-- 09\d{2}-?\d{3}-?\d{3}  ?的意思是前面的字可有可無  ex:'-'可有可無 -->
+                            <input type="text" class="form-control" id="mobile" name="mobile" pattern="09\d{2}-?\d{3}-?\d{3}">
+                        </div>
+                        <div class="form-group">
+                            <label for="birthday">生日</label>
+                            <input type="date" class="form-control" id="birthday" name="birthday">
+                        </div>
+                        <div class="form-group">
+                            <label for="address">地址</label>
+                            <textarea class="form-control" id="address" name="address" cols="30" rows="3"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">新增</button>
                     </form>
                 </div>
             </div>
