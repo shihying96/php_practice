@@ -55,14 +55,14 @@ $rows = $pdo->query($sql)->fetchAll();
                     <ul class="pagination">
                         <li class="page-item <?= $page <= 1 ? 'disabled' : '' ?>">
 
-                       
+
                             <a class="page-link" href="?page=<?= $page - 1 ?>">
                                 <i class="fas fa-arrow-circle-left"></i>
                             </a>
                         </li>
                         <?php for ($i = 1; $i <= $totalPages; $i++) : ?>
                             <li class="page-item <?= $i == $page ? 'active' : '' ?>">
-                               <!-- 做分頁， ?page=<?= $i ?>是get參數，滑上去按鍵，網頁左下角會顯示是第幾頁-->
+                                <!-- 做分頁， ?page=<?= $i ?>是get參數，滑上去按鍵，網頁左下角會顯示是第幾頁-->
                                 <a class="page-link" href="?page=<?= $i ?>"><?= $i ?></a>
                             </li>
                         <?php endfor; ?>
@@ -84,30 +84,48 @@ $rows = $pdo->query($sql)->fetchAll();
         <table class="table table-striped">
             <thead>
                 <tr>
+                    <th scope="col"><i class="fas fa-trash-alt"></i></th>
                     <th scope="col">#</th>
                     <th scope="col">Name</th>
                     <th scope="col">Email</th>
                     <th scope="col">Mobile</th>
                     <th scope="col">Birthday</th>
                     <th scope="col">Address</th>
-                    <th scope="col"><i class="fas fa-trash-alt"></i></th>
+
                 </tr>
             </thead>
             <tbody>
                 <?php foreach ($rows as $r) : ?>
                     <tr>
+
+
+                        <td class="trash">
+                            <a href="javascript:delete_it(<?= $r['sid'] ?>)">
+                                <i class="fas fa-trash-alt"></i>
+                            </a>
+                        </td>
+
                         <td><?= $r['sid'] ?></td>
                         <td><?= $r['name'] ?></td>
                         <td><?= $r['email'] ?></td>
                         <td><?= $r['mobile'] ?></td>
                         <td><?= $r['birthday'] ?></td>
-                        <td><?= $r['address'] ?></td>
-                        <td class="trash">
-                            <a href="javascript:">
-                                <!-- header要掛fontawesome -->
-                                <i class="fas fa-trash-alt"></i>
+                        <!-- strip_tags過濾標籤，阻止惡意指令，ex:在地址欄位填<script>語法 -->
+                        <td><?= htmlentities($r['address']) ?>
+                            <?= strip_tags($r['address'])  ?>
+                        </td>
+
+                        <td>
+                            <a href="ab-edit.php?sid=<?= $r['sid'] ?>">
+                                <i class="fas fa-edit"></i>
                             </a>
                         </td>
+                        <!-- <td class="trash">
+                            <a href="javascript:"> -->
+                        <!-- header要掛fontawesome -->
+                        <!-- <i class="fas fa-trash-alt"></i>
+                            </a>
+                        </td> -->
                     </tr>
                 <?php endforeach; ?>
             </tbody>
@@ -117,9 +135,12 @@ $rows = $pdo->query($sql)->fetchAll();
     <?php include __DIR__ . '/parts/scripts.php'; ?>
 
     <script>
-        $('.trash').click(function() {
+        function delete_it(sid) {
 
-            $(this).parent().remove();
-        });
+            if (confirm(`確定要刪除編號為 ${sid} 的資料嗎?`)) {
+                location.href = 'ab-delete.php?sid=' + sid;
+            }
+
+        }
     </script>
     <?php include __DIR__ . '/parts/html-foot.php'; ?>
